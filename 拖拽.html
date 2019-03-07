@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.sp {
+			position: absolute;
+			top: 100px;
+			left: 100px;
+			width: 100px;
+			height: 100px;
+			cursor: move;
+			border-radius: 50px;
+			background-color: blue;
+		}
+	</style>
+	<body>
+		<!-- <span class="sp" id="sp"></span> -->
+		<script>
+			function sp() {
+				//创建span元素(也是拖拽容器)
+				var sp = document.createElement("span");
+				//span给个 id = "sp"
+				sp.id = "sp";
+				sp.className = "sp";
+				//把标签放入body
+				document.body.prepend(sp);
+				//获取窗口的可视区域宽度
+				var cwidth = document.documentElement.clientWidth || document.body.clientWidth;
+				//获取窗口的可视区域高度
+				var cheight = document.documentElement.clientHeight || document.body.clientHeight;
+				//获取元素的宽度
+				var spWidth = sp.offsetWidth;
+				//获取元素的高度D
+				var spHeight = sp.offsetHeight;
+				//设置元素居中显示
+				sp.style.left = (cwidth - spWidth) / 2 + "px";
+				sp.style.top = (cheight - spHeight) / 2 + "px";
+				//改变窗口大小元素依然居中
+				window.onresize = function() {
+					// document.compatMode 
+					// BackCompat：标准兼容模式关闭。
+					// CSS1Compat：标准兼容模式开启。
+					// 当document.compatMode等于BackCompat时，浏览器客户区宽度是document.body.clientWidth；
+					// 当document.compatMode等于CSS1Compat时，浏览器客户区宽度是document.documentElement.clientWidth。
+					if (document.compatMode === "CSS1Compat") {
+						cwidth = document.documentElement.clientWidth;
+						cheight = document.documentElement.clientHeight;
+					} else {
+						cwidth = document.body.clientWidth;
+						cheight = document.body.clientHeight;
+					}
+					sp.style.left = (cwidth - spWidth) / 2 + "px";
+					sp.style.top = (cheight - spHeight) / 2 + "px";
+					
+					console.log(document.compatMode)
+				}
+				
+				//拖拽容器就是 sp
+				//用来判断是否可以拖拽
+				var isDraging = false;
+				// 存储鼠标相对于元素的位置
+				var mouseOffsetX,mouseOffsetY;
+				
+				//鼠标按下事件 onmousedown
+				sp.onmousedown = function (e) {
+					var e = e || window.event;
+					//鼠标相对于元素的位置
+					mouseOffsetX = e.pageX - sp.offsetLeft;
+					mouseOffsetY = e.pageY - sp.offsetTop;
+					// 鼠标摁下时为true
+					isDraging = true;
+				}
+				
+				// 鼠标移动事件
+				document.onmousemove = function (e) {
+					var e = e || window.event;
+					// 鼠标移动时的坐标
+					var newMX = e.pageX,
+						newMY = e.pageY;
+					//判断是否可以拖拽	
+					if(isDraging === true){
+						//元素的偏移值 = 当前位置 - 鼠标到元素边边的距离
+						var sp_l = newMX - mouseOffsetX,
+							sp_t = newMY - mouseOffsetY;
+						
+						// 如果left top 的值超过边缘时就让它等于边缘
+						if(sp_l < 0) {
+							sp_l = 0
+						} else if(sp_l > (cwidth - spWidth)){
+							sp_l = cwidth - spWidth;
+						}
+						if(sp_t < 0){
+							sp_t = 0;
+						} else if(sp_t > (cheight - spHeight)){
+							sp_t = cheight - spHeight;
+						}
+						
+						sp.style.left = sp_l + "px";
+						sp.style.top = sp_t + "px";
+					}
+				}
+				
+				//鼠标弹起时设置为不可拖拽 onmouseup
+				document.onmouseup = function(){
+					isDraging = false;
+				}
+				
+			}
+
+			window.onload = function() {
+				sp();
+			}
+		</script>
+	</body>
+</html>

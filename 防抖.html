@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="inp">
+		<button type="button" id="btn">click</button>
+		<script>
+			var oInp = document.getElementById("inp");
+			var oBtn = document.getElementById("btn");
+			
+			// apply：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.apply(A, arguments);即A对象应用B对象的方法。
+			function debounce(handler, delay) {
+				var timer = null;
+				return function() {
+					var _self = this;
+					var _arg = arguments;
+					// console.log("_self",_self)
+					// console.log("_arg",_arg)
+					clearTimeout(timer);
+					timer = setTimeout(function() {
+						handler.apply(_self, _arg);
+					}, delay);
+				}
+			}
+			function ajax (e) {				
+				
+				console.log(e,this.innerText);	
+				console.log(e,this.value);			
+			}
+			
+			oBtn.onclick = debounce(ajax,2000)
+			oInp.oninput = debounce(ajax, 2000);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr = [1,2,3,9,4,5,6];
+			var maxNumber = Math.max.apply(null,arr);
+			console.time("one")
+			console.log(maxNumber);
+			console.timeEnd("one")
+			
+			var arr2 = new Array(1,2,3);
+			var arr3 = new Array(4,5,6);
+			var arr4 = Array.prototype.push.apply(arr2,arr3);
+			var arr5 = arr2.concat(arr3);
+			console.log(arr2)
+			console.log(arr3)
+			console.log(arr4)
+			console.log(arr5)
+		</script>
+	</body>
+</html>
