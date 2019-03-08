@@ -35,7 +35,7 @@
 				function foo () {}
 				var foo = 11;
 			}
-			console.log(bar());// function foo () {}
+			// console.log(bar());// function foo () {}
 			
 			function bar2 () {
 				foo = 10;
@@ -43,7 +43,21 @@
 				var foo = 11;
 				return foo;
 			}
-			console.log(bar2())// 11
+			// console.log(bar2())// 11
+			
+			(function(){
+				try {
+					throw new Error();
+				}catch(x){
+					var x = 1, y = 2;
+					console.log("=",x)
+				}
+			
+				console.log("==",x);
+				console.log("===",y);
+				
+			})();
+			
 		</script>
 	</body>
 </html>
