@@ -1,50 +1,32 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-	</head>
-	<body>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <button id="btn">全选</button> -->
+	<label><input type="checkbox" id="btn">全选</label>
+	<label><input type="checkbox" name="fruits" onclick="">苹果</label>
+	<label><input type="checkbox" name="fruits">雪梨</label>
+	<label><input type="checkbox" name="fruits">香蕉</label>
+	<label><input type="checkbox" name="fruits">椰子</label>
+	<label><input type="checkbox" name="fruits">番茄</label>
 
-		<script>
-			//移除数组 arr 中的所有值与 item 相等的元素,不要直接修改数组 arr ,结果返回新数组.
-			//使用过滤器方法
+	<script>
+		var oBtn = document.getElementById("btn");
+		var fruits = document.getElementsByName("fruits");
+		oBtn.onclick = function () {
+			// console.log(this.checked);
+			for(var i = 0; i < fruits.length; i ++) {
+					fruits[i].checked = this.checked;
+				}
+		}
+		console.log(fruits)
 
-			function remove(arr, item) {
-				return arr.filter(function(el) {
-					return (el != item);
-				})
-			}
 
-			// console.log(remove(arr, item)) //输出[1,2,3,4,5,6,7,8,0]
-
-
-			//去除数组重复元素,不改变原数组,结果返回新数组.
-
-			var arr2 = [1, 2, 1, 3, 2, 4, 5, 3, 5, 6, 7, 4, 7, 8, 9, 7, 8, 9, 0, 2, 3, 0];
-
-			function arrFilter(arr2) {
-				var newArr = [];
-				newArr = arr2.filter(function(el, index, arr) {
-					// indexOf 从 0 开始的 arr.indexOf(el) 每次都是从0开始检阅
-					// el arr2的元素 index 是下标
-					// arr 就是 arr2
-					return arr.indexOf(el) === index;
-				})
-				return newArr;
-			}
-			// console.log(arrFilter(arr2));
-			// console.log(arr2);
-			
-			
-			var arr3 = ["a","b","c"]
-			var arr4 = [
-				{a:"aa1",b:"aa2",c:"aa3"},
-				{a:"bb1",b:"bb2",c:"bb3"},
-				{a:"aa1",b:"bb",c:"cc"},
-			]
-			
-			
-		</script>
-	</body>
+	</script>
+</body>
 </html>
