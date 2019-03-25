@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="element"></button>
+		<button id="target"></button>
+		<script src="js/parabola.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/* 元素 */
+			
+			var element = document.getElementById("element"),
+				target = document.getElementById("target");
+			// 抛物线元素的的位置标记
+			var parabola = funParabola(element, target).mark();
+			// 抛物线运动的触发
+			document.body.onclick = function() {
+				element.style.marginLeft = "0px";
+				element.style.marginTop = "0px";
+				parabola.init();
+			};
+		</script>
+	</body>
+</html>

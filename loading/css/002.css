@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.circle-main {
+  margin: 100px auto;
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.circle-main > span[class^='circle'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.circle-main > span[class^='circle']:before {
+  content: '';
+  display: block;
+  margin: 0 auto;
+  width: 6px;
+  height: 6px;
+  background-color: black;
+  border-radius: 100%;
+  animation: sk 1.2s infinite ease-in-out both;
+}
+
+.circle-main > span[class^='circle'].circle2 {
+  transform: rotate(30 deg);
+}
+
+.circle-main > span[class^='circle'].circle2:before {
+  animation-delay: -1.1 s;
+}
+
+.circle-main > span[class^='circle'].circle3 {
+  transform: rotate(60 deg);
+}
+
+.circle-main > span[class^='circle'].circle3:before {
+  animation-delay: -1 s;
+}
+
+.circle-main > span[class^='circle'].circle4 {
+  transform: rotate(90 deg);
+}
+
+.circle-main > span[class^='circle'].circle4:before {
+  animation-delay: -0.9 s;
+}
+
+.circle-main > span[class^='circle'].circle5 {
+  transform: rotate(120 deg);
+}
+
+.circle-main > span[class^='circle'].circle5:before {
+  animation-delay: -0.8 s;
+}
+
+.circle-main > span[class^='circle'].circle6 {
+  transform: rotate(150 deg);
+}
+
+.circle-main > span[class^='circle'].circle6:before {
+  animation-delay: -0.7 s;
+}
+
+.circle-main > span[class^='circle'].circle7 {
+  transform: rotate(180 deg);
+}
+
+.circle-main > span[class^='circle'].circle7:before {
+  animation-delay: -0.6 s;
+}
+
+.circle-main > span[class^='circle'].circle8 {
+  transform: rotate(210 deg);
+}
+
+.circle-main > span[class^='circle'].circle8:before {
+  animation-delay: -0.5 s;
+}
+
+.circle-main > span[class^='circle'].circle9 {
+  transform: rotate(240 deg);
+}
+
+.circle-main > span[class^='circle'].circle9:before {
+  animation-delay: -0.4 s;
+}
+
+.circle-main > span[class^='circle'].circle10 {
+  transform: rotate(270 deg);
+}
+
+.circle-main > span[class^='circle'].circle10:before {
+  animation-delay: -0.3 s;
+}
+
+.circle-main > span[class^='circle'].circle11 {
+  transform: rotate(300 deg);
+}
+
+.circle-main > span[class^='circle'].circle11:before {
+  animation-delay: -0.2 s;
+}
+
+.circle-main > span[class^='circle'].circle12 {
+  transform: rotate(330 deg);
+}
+
+.circle-main > span[class^='circle'].circle12:before {
+  animation-delay: -0.1 s;
+}
+
+@keyframes sk {
+  0%,
+  39%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}

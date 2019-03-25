@@ -1,0 +1,24 @@
+$size: 50px;
+
+.box {
+	height: $size * 2;
+	width: $size * 2;
+	position: relative;
+	top: calc(50% - #{$size / 2}); 
+	left: calc(50% - #{$size / 2}); 
+	perspective: 1000px;
+	.thing {
+		height: $size;
+		width: $size;
+		background-color: #e87722;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+@for $i from 1 through 4 {
+	.thing::nth-of-type(#{$i}) {
+		animation: bounce 0.5s ease-in-out infinite alternate, move 4s #{-$i}s infinite;
+	}
+}
